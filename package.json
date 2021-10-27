@@ -8,7 +8,9 @@
     "start": "webpack-dev-server --config webpack.config.js --mode=development --watch"
   },
   "dependencies": {
-    "vue": "^2.5.17"
+    "vue": "^2.5.17",
+    "vuex": "^3.6.2",
+    "vuex-persistedstate": "^4.1.0"
   },
   "devDependencies": {
     "css-loader": "^1.0.0",

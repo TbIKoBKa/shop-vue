@@ -12,7 +12,7 @@
     </div>
 </template>
 <script>
-    import products from '../data/products.js'
+    import products from '../data/products'
 
     export default {
         data: function() {

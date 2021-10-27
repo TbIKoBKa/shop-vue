@@ -4,6 +4,7 @@
             <input placeholder="Пошук" v-model="search">
             <input type="submit"  class="btn">
         </form>
+        <router-link :to="'/cart'">CART</router-link>
         <div class="product" v-for="(item) in filteredItems" v-bind:key="item.id">
             <div class="product-image">
                 <img v-bind:src="item.src">
@@ -15,13 +16,13 @@
                     </router-link>
                 </h4>
                 <label>{{item.price}}</label>
-                <button class="btn">Add to cart</button>  
+                <button class="btn" @click="addToCart(item)">Add to cart</button>  
             </div>
         </div>
     </div>
 </template>
 <script>
-    import products from '../data/products.js'
+    import products from '../data/products'
 
     export default {
         data: function () {
@@ -36,7 +37,6 @@
         },
         computed: {
             filteredItems: function() {
-                console.log(this);
                 if (!this.search) {
                     return this.items;
                 }
@@ -44,6 +44,14 @@
                     return element.item.toUpperCase().includes(this.search.toUpperCase());
                 });
             },
-        }
+        },
+        methods: {
+            addToCart(item) {
+                this.$store.commit('setCart', item)
+            },
+            removeFromCart(id) {
+                this.$store.commit('removeItem', id)
+            },
+        },
     }
 </script>

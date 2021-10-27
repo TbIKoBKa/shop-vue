@@ -1,13 +1,17 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 
-import App from './components/App.vue'
-import ProductInfo from './components/ProductInfo.vue'
-import ProductsList from './components/ProductsList.vue'
+import App from './components/App'
+import ProductInfo from './components/ProductInfo'
+import ProductsList from './components/ProductsList'
+import Cart from './components/Cart'
+
+import store from './store'
 
 const routes = [
     { path: '/', component: ProductsList },
-    { path: '/product/:id', component: ProductInfo }
+    { path: '/product/:id', component: ProductInfo },
+    { path: '/cart', component: Cart },
 ]
 
 const router = new VueRouter({
@@ -20,4 +24,5 @@ new Vue({
     render: h => h(App),
     el: '#app',
     router,
+    store,
 })
