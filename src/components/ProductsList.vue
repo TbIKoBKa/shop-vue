@@ -4,14 +4,13 @@
             <input placeholder="Пошук" v-model="search">
             <input type="submit"  class="btn">
         </form>
-        <router-link :to="'/cart'">CART</router-link>
-        <div class="product" v-for="(item) in filteredItems" v-bind:key="item.id">
+        <div class="product" v-for="(item) in filteredItems" v-bind:key="item._id">
             <div class="product-image">
                 <img v-bind:src="item.src">
             </div>
             <div>
                 <h4 class="product-title">
-                    <router-link v-bind:to="'/product/' + item.id">
+                    <router-link v-bind:to="'/product/' + item._id">
                         {{ item.item }}
                     </router-link>
                 </h4>
@@ -22,18 +21,19 @@
     </div>
 </template>
 <script>
-    import products from '../data/products'
-
     export default {
-        data: function () {
+        data() {
             return {
                 items: [],
                 search: '',
                 searchResult: []
             };
         },
-        mounted: function(){
-            this.items = products;
+        mounted: async function() {
+            const response = await fetch('http://localhost:4000/products')
+            const data = await response.json()
+            this.$store.commit('setProducts', data)
+            this.items = data
         },
         computed: {
             filteredItems: function() {

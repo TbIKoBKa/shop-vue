@@ -1,6 +1,9 @@
 <template>
     <div class="main">
-        <h1>Mini Shop</h1>
+        <header class="header">
+            <h1>Mini Shop</h1>
+            <router-link :to="'/cart'" class="btn cart__button">Cart</router-link>
+        </header>
         <div class="content">
             <router-view></router-view>
         </div>
@@ -26,6 +29,11 @@
         border: none;
         cursor: pointer;
         opacity: 1;
+    }
+
+    .btn.large {
+        font-size: 24px;
+        padding: 4px 12px;
     }
 
     .btn:active {
@@ -65,8 +73,9 @@
     }
 
     .header {
+        display: flex;
+        align-items: center;
         flex: 0;
-        padding: 1rem 0;
     }
 
     .main {
@@ -146,5 +155,27 @@
         text-align: center;
         color: #AAAAAA;
         font-size: 0.85rem;
+    }
+
+    .counter {
+        display: flex;
+        align-items: center;
+        width: 100px;
+        justify-content: space-between;
+    }
+
+    .counter__button {
+        width: 30px;
+        height: 30px;
+        font-size: 18px;
+    }
+
+    .cart__button {
+        display: flex;
+        align-items: center;
+        text-decoration: none;
+        padding: 4px 12px;
+        height: fit-content;
+        margin-left: 12px;
     }
 </style>

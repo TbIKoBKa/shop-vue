@@ -8,6 +8,9 @@ module.exports = {
     resolve: {
         extensions: ['.js', '.vue'],
     },
+    devServer: {
+        port: 3000,
+    },
     module: {
         rules: [
             {
